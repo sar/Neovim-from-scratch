@@ -1,0 +1,93 @@
+# keymap
+
+=========== PROFILE 0 ==============
+
+[ Fn1 ] [ ] [ ] [ ]       [ F1 ] [ F2 ] [ F3 ] [ F4 ]
+[ stage_buffer ] [ stage_hunk ] [ git_commit ] [ git_status ]    [ F5 ] [ F6 ] [ F7 ] [ F8 ]
+[ C-S-g ] [ C-A-g ] [ A-S-g ] [ A-g ]           [ F9 ] [ F10 ] [ F11 ] [ F12 ]
+[ A-S-v ] [ outdent ] [ indent ] [ <A-f> ]     [ pstart] [ pstart ] [ pend ] [ wnext ]
+[ C-S-b ] [ A-\ ] [ C-S-/ ] [ C-S-t ]          [ <C-h> ] [ <S-h> ] [ <S-l> ] [ <C-l> ]
+[ C-S-a ] [ C-S-x ] [ C-S-c ] [ C-S-v ]        [ <A-q> ] [ <C-A-j> ] [ <C-A-k> ] [ K ]
+
+REMAP:
+[SWITCHK] [ S-F01 ] [ S-F02 ] [ S-F03 ]       [  M-F01  ] [ M-F02 ] [ M-F03 ] [ M-F04 ]
+[ S-F05 ] [ S-F06 ] [ S-F07 ] [ S-F08 ]       [  M-F05  ] [ M-F06 ] [ M-F07 ] [ M-F08 ]
+[ S-F09 ] [ S-F10 ] [ S-F11 ] [ S-F12 ]       [  F09/J2 ] [ F10/w ] [ F11/b ] [ F12/J1]
+[ C-F01 ] [ C-F02 ] [ C-F03 ] [ C-F04 ]       [  F1/h ] [ F2/j  ] [ F3/k  ] [ F4/l  ]
+[ C-F05 ] [ C-F06 ] [ C-F07 ] [ C-F08 ]       [ A-F05 ] [ A-F06 ] [ A-F07 ] [ A-F08 ]
+[ C-F09 ] [ C-F10 ] [ C-F11 ] [ C-F12 ]       [ A-F09 ] [ A-F10 ] [ A-F11 ] [ FN-02 ]
+
+*allows for nvim level remapping of functions
+*downside is 3-layering unsupported
+*F-01...F-12 can be used with Fn+1(MayTriggerProfileHotKey) or Fn+2
+*use bottom_left(Fn2)+WASD=BackWord/UpPara/DownPara/NextWord
+*use bottom_left(Fn2)+WASD=BackWord/UpPara/DownPara/NextWord
+
+actions:
+    :move .+1 (mv line down)      <C-A-j>
+    :move .-2 (mv line up)        <C-A-k>
+    :rename()                     <F5>
+    :telescope 
+        lsp_references()          <F11>
+        lsp_type_definitions()    <F10>
+        find_files()              <F12>
+    :spectre() find_replace       <F9>
+    :vim.lsp.buf.hover()          <K>           # TODO: replace with autohover 
+    :BufferClose                  <A-q>
+    :lua vim.lsp.buf.formatting() <A-f>
+    :indent-
+    :indent+
+    :select line                  <A-S-v>
+    :live grep                    
+
+git:
+    :VGit buffer_history_preview  <C-S-g>       # BUG: keymap not detected 
+    :Gitsigns diffthis            <C-A-g>       # BUG: keymap not detected 
+    :DiffviewToggleFiles          <A-S-g>
+    :Neogit                       <A-g>
+    :Gitsigns stage_buffer
+    :Gitsigns stage_hunk
+    :git commit
+    :toggle git log status sidebar
+
+navigate:
+    :split
+    :vertical split
+    :bnext                        <S-l>
+    :bprevious                    <S-h>
+
+debug:
+    :terminal                   <C-S-\>
+    :diagnostics                <C-S-t>
+    :dap
+        .toggle_breakpoint()    <C-S-x>
+        .continue()             <C-S-c>
+        .step_over()            <C-S-v>
+        .step_into()            <C-S-b>
+        .step_out()             <C-S-a>
+    .dapui.toggle()             <A-\>
+    :toggle sidbar with incoming/outgoing calls   # lua vim.lsp.buf.incomingcalls unsupported
+
+* .buffers() :bnext :bprevious :close
+* cursor nav: h() j() k() l()
+* panel nav: panel_left(), panel_right(), panel_up(), panel_down()
+* panel resize: left/right/up/down
+
+=========== PROFILE 1 ==============
+
+cwm
+[ Fn1 ] [ = ] [ - ] [ S-+ ]                 [ F1 ] [ F2 ] [ F3 ] [ F4 ]
+[ M-S-1 ] [ M-S-2 ] [ M-S-3 ] [ M-S-4 ]     [ M-1 ] [ M-2 ] [ M-3 ] [ M-4 ]
+[ M-S-5 ] [ M-S-6 ] [ M-S-7 ] [ M-S-8 ]     [ M-5 ] [ M-6 ] [ M-7 ] [ M-7 ]
+[ A-h ] [ A-j ] [ A-k ] [ A-l ]             [ Left ] [ Down ] [ Up ] [ Right ]
+[ A-S-h ] [ A-S-j ] [ A-S-k ] [ A-S-l ]     [ S-h ] [ S-j ] [ S-k ] [ S-l ]
+[ h ] [ j ] [ k ] [ l ]                     [ C-c ] [ C-v ] [ A-/ ] [ A-S-/ ] 
+
+missing 
+layering:
+    A-down
+    A-up
+switch to window:
+    left/right of current
+
+
