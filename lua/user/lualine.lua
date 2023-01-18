@@ -48,14 +48,38 @@ local location = {
 	padding = 0,
 }
 
--- cool function for progress
+local colors = {
+  blue = "#80a0ff",
+  red = "#ff5189",
+  black = "#000000",
+  white = "#ffffff",
+  orange = "#ff500a",
+  green = "#32cd32",
+  grey = "#080808",
+}
+
+local black_theme = {
+  normal = {
+    a = { fg = colors.gray, bg = colors.black }
+  },
+
+  insert = { a = { fg = colors.black, bg = colors.orange } },
+  visual = { a = { fg = colors.black, bg = colors.green } },
+  replace = { a = { fg = colors.black, bg = colors.red } },
+
+  inactive = {
+    a = { fg = colors.white, bg = colors.black },
+  }
+}
+
 local progress = function()
 	local current_line = vim.fn.line(".")
 	local total_lines = vim.fn.line("$")
-	local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
+	local chars = { "_", "▁", "▂", "▃", "▄", "▅", "▆", "▇", "█" }
 	local line_ratio = current_line / total_lines
 	local index = math.ceil(line_ratio * #chars)
-	return chars[index]
+	-- return chars[index]
+    return math.ceil(line_ratio * 100) 
 end
 
 local spaces = function()
@@ -65,19 +89,18 @@ end
 lualine.setup({
 	options = {
 		icons_enabled = true,
-		theme = "auto",
+		theme = black_theme,
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
 		always_divide_middle = true,
 	},
 	sections = {
-		lualine_a = { branch, diagnostics },
-		lualine_b = { mode },
-		lualine_c = {},
-		-- lualine_x = { "encoding", "fileformat", "filetype" },
-		lualine_x = { diff, spaces, "encoding", filetype },
-		lualine_y = { location },
+		lualine_a = { mode, location },
+		lualine_b = { diagnostics },
+		lualine_c = { tabs, lsp_progress },
+		lualine_x = { spaces, "encoding", "fileformat", filetype },
+		lualine_y = { diff, branch },
 		lualine_z = { progress },
 	},
 	inactive_sections = {

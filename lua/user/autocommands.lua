@@ -5,6 +5,21 @@ vim.cmd [[
     autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200}) 
     autocmd BufWinEnter * :set formatoptions-=cro
     autocmd FileType qf set nobuflisted
+    autocmd User TelescopePreviewerLoaded setlocal wrap
+  augroup end
+
+  augroup _auto_run
+    autocmd!
+    autocmd BufWinEnter * :NvimTreeOpen
+    autocmd BufWinEnter * :SymbolsOutlineOpen
+    autocmd BufWinEnter * :BufferOrderByBufferNumber
+  augroup end
+
+  augroup _buffer 
+    autocmd!
+    autocmd CursorHold * :lua vim.lsp.buf.hover()
+    autocmd CursorHoldI * :lua vim.lsp.buf.hover()
+    " autocmd BufWinEnter * :lua vim.diagnostic.setloclist()
   augroup end
 
   augroup _git

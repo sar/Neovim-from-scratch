@@ -39,5 +39,11 @@ luac.out
 *.x86_64
 *.hex
 
-
 plugin/packer_compiled.lua
+
+# environment::
+env/
+.gitconfig
+.p10k.zsh
+gh/
+
