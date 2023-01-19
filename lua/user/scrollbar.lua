@@ -1,12 +1,11 @@
 local status_ok, scrollbar = pcall(require, "scrollbar")
 if not status_ok then
-  return
+    return
 end
 
 scrollbar.setup {
-  show = true,
-  handle = {
-     color = "gray",
-  },
+    show = true,
+    handle = {
+        color = "darkgray",
+    },
 }
-
