@@ -58,10 +58,10 @@ return packer.startup(function(use)
     use "sar/bbye.nvim" -- wm state
 
     -- interface --
-    use "sar/extra-darkplus.nvim" -- theme
+    use "sar/ultra-darkplus.nvim" -- theme
     use "sar/web-devicons.nvim" -- icons
     use "sar/alpha.nvim" -- greeter
-    -- use "sar/scrollbar.nvim"          -- scrollbar
+    -- use "sar/scrollbar.nvim" -- scrollbar
     use "sar/bufferline.nvim" -- tab area
     -- use "sar/sidebar.nvim"         -- sidebar
     use "sar/lualine.nvim" -- footer
@@ -172,18 +172,20 @@ return packer.startup(function(use)
         run = ":TSUpdate",
     }
 
+    -- BUG: throws exceptions (fast forward)
     -- treesitter:extension:indent formatter
     use {
         "sar/yati.nvim",
         requires = "sar/treesitter.nvim",
     }
 
+    -- BUG: use branch neovim-pre-0.8.0
     -- folke/todo-comments
-    use {
-        "sar/todo-comments.nvim",
-        requires = "sar/plenary.nvim",
-        config = function() require("todo-comments").setup() end,
-    }
+    -- use {
+    --     "sar/todo-comments.nvim",
+    --     requires = "sar/plenary.nvim",
+    --     config = function() require("todo-comments").setup() end,
+    -- }
 
     -- sar/renamer.nvim
     use {
@@ -230,8 +232,9 @@ return packer.startup(function(use)
         end,
     }
 
+    -- lsp_diagnostics float
     use {
-        "sar/e-kaput.nvim",
+        "sar/diag-float.nvim",
         config = function() require('e-kaput').setup {
                 enabled = true,
                 transparency = 0,
@@ -253,7 +256,6 @@ return packer.startup(function(use)
 
     -- debug adapter
     use "sar/dap.nvim"
-
     use {
         'sar/dap-ui.nvim',
         requires = { 'sar/dap.nvim' },
@@ -265,6 +267,7 @@ return packer.startup(function(use)
         end,
     }
 
+    -- optional:: dap installer
     -- use {
     --   "sar/dap-install.nvim",
     --   config = function() require("dap-install").setup {
@@ -272,6 +275,7 @@ return packer.startup(function(use)
     --   } end,
     -- }
 
+    -- dap virtual text
     use {
         'sar/dap-virtual-text.nvim',
         config = function() require('nvim-dap-virtual-text').setup {} end,
@@ -284,16 +288,17 @@ return packer.startup(function(use)
         config = function() require('package-info').setup() end,
     }
 
-    use {
-        "sar/docs-view.nvim",
-        opt = true,
-        cmd = { "DocsViewToggle" },
-        config = function() require('nvim-docs-view').setup {
-                position = "top",
-                height = 60,
-            }
-        end,
-    }
+    --- BUG: nvim-docs-view not found
+    -- use {
+    --     "sar/docs-view.nvim",
+    --     opt = true,
+    --     cmd = { "DocsViewToggle" },
+    --     config = function() require('docs-view').setup {
+    --             position = "top",
+    --             height = 60,
+    --         }
+    --     end,
+    -- }
 
     -- spectre find_replace
     use {
@@ -302,7 +307,7 @@ return packer.startup(function(use)
     }
 
     -- git --
-    use "sar/gitsigns.nvim" 
+    use "sar/gitsigns.nvim"
 
     use {
         "sar/vgit.nvim",
@@ -327,6 +332,7 @@ return packer.startup(function(use)
     --   config = function() require("gh").setup {} end,
     -- }
 
+    -- git::git conflicts
     use {
         "sar/git-conflict.nvim",
         config = function() require("git-conflict").setup {} end,
