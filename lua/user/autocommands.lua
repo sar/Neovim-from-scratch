@@ -10,16 +10,24 @@ vim.cmd [[
 
   augroup _auto_run
     autocmd!
-    autocmd BufWinEnter * :NvimTreeOpen
-    autocmd BufWinEnter * :SymbolsOutlineOpen
+    autocmd VimEnter * :Alpha
+    " autocmd VimEnter * :NvimTreeOpen
+    autocmd VimEnter * :Neotree
+    autocmd VimEnter * :Trouble
     autocmd BufWinEnter * :BufferOrderByBufferNumber
+  augroup end
+
+  augroup _outline
+    autocmd BufWinEnter * :SymbolsOutlineOpen
+    autocmd FileType Outline setlocal signcolumn=no
   augroup end
 
   augroup _buffer 
     autocmd!
     autocmd CursorHold * :lua vim.lsp.buf.hover()
     autocmd CursorHoldI * :lua vim.lsp.buf.hover()
-    " autocmd BufWinEnter * :lua vim.diagnostic.setloclist()
+    autocmd CursorHold * :lua vim.diagnostic.open_float({ scope="line" })
+    " " autocmd BufWinEnter * :lua vim.diagnostic.setloclist()
   augroup end
 
   augroup _git

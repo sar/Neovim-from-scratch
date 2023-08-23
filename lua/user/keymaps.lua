@@ -53,6 +53,8 @@ keymap("n", "<A-f>", ":Telescope find_files<CR>", opts)
 keymap("n", "<A-r>", ":Telescope lsp_references<CR>", opts)
 
 -- navigate.terminal
+keymap("n", "<A-i>", ":lua require('FTerm').toggle()<CR>", opts)
+-- keymap("t", "<bs>", "<C-w>", opts) -- BUG: remap does not work
 -- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 -- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 -- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)

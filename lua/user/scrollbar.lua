@@ -6,6 +6,6 @@ end
 scrollbar.setup {
     show = true,
     handle = {
-        color = "darkgray",
+        color = "#232323",
     },
 }

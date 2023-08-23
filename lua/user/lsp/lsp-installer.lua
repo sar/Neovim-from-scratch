@@ -5,22 +5,28 @@ end
 
 local servers = {
     "bashls",
+    "cmake",
+    "clangd",
+    -- "ccls",
     "csharp_ls",
     "dockerls",
     "eslint",
     "graphql",
     "html",
     "cssls",
-    "tailwindcss",
     "jsonls",
-    "remarkls",
+    "marksman",
+    "remark_ls",
     "terraformls",
     "tflint",
-    -- "omnisharp",
     -- "ansiblels",   -- BUG: fails to install
+    "lua_ls",
     "sumneko_lua",
     "lemminx",        -- WARN: binary
     "sqlls",
+    "pylsp",
+    "pyright",
+    -- "rome",        -- BUG: logs errors
     "tsserver",
     "yamlls",
 }
@@ -55,9 +61,19 @@ lsp_installer.on_server_ready(function(server)
         opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
     end
 
-    if server.name == "sumneko_lua" then
-        local sumneko_opts = require("user.lsp.settings.sumneko_lua")
+    if server.name == "lua_ls" then
+        local sumneko_opts = require("user.lsp.settings.lua_ls")
         opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
+    end
+
+    if server.name == "clangd" then
+        local clangd_opts = require("user.lsp.settings.clangd")
+        opts = vim.tbl_deep_extend("force", clangd_opts, opts)
+    end
+
+    if server.name == "csharp_ls" then
+        local csharp_opts = require("user.lsp.settings.csharp_ls")
+        opts = vim.tbl_deep_extend("force", csharp_opts, opts)
     end
 
     -- This setup() function is exactly the same as lspconfig's setup function.
