@@ -1,5 +1,7 @@
 # Compiled Lua sources
 luac.out
+.nvim
+.nvim_old
 
 # luarocks build files
 *.src.rock
@@ -43,6 +45,7 @@ plugin/packer_compiled.lua
 
 # environment::
 env/
+home/
 .gitconfig
 .p10k.zsh
 gh/
