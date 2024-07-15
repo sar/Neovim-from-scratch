@@ -3,7 +3,6 @@ require "user.options"
 require "user.keymaps"
 --#endregion
 
---#region Plugins
 require "user.plugins"
 require "user.colorscheme"
 require "user.cmp"
@@ -24,6 +23,7 @@ require "user.scrollbar"
 --require "user.sidebar"
 require "user.aerial"
 require "user.symbols-outline"
+require "user.trouble"
 require "user.bufferline"
 require "user.lualine"
 require "user.toggleterm"

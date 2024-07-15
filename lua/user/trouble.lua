@@ -3,7 +3,7 @@ if not status_ok then
    return
 end
 
-trouble.after('nvim-lspconfig');
+trouble.after = 'nvim-lspconfig';
 
 local opts = {
     position = "bottom",
