@@ -1,6 +1,6 @@
 local fn = vim.fn
 
-local run_root = "/blade0/pub.dev/nvim-config/.nvim/"
+local run_root = "/code0/pub.dev/nvim-config/.nvim/"
 
 -- Automatically install packer
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
@@ -44,45 +44,47 @@ packer.init {
 -- :PackerSync, :PackerInstall (local)
 return packer.startup(function(use)
     -- base --
-    use { run_root .. "packer.nvim" } -- packer
-    use { run_root .. "plenary.nvim" } -- lua functions
+    use { run_root .. "packer.nvim" }    -- packer
+    use { run_root .. "plenary.nvim" }   -- lua functions
     use { run_root .. "impatient.nvim" } -- perf
-    use { run_root .. "vim-bbye" } -- wm state
+    use { run_root .. "vim-bbye" }       -- wm state
 
     -- interface --
-    use "/blade0/pub.dev/darkplusplus.nvim"
+    use "/code0/pub.dev/darkplusplus.nvim"
     -- use { run_root .. "darkplusplus.nvim" } -- theme
     -- use { run_root .. "extra-darkplus.nvim" } -- theme
     -- use { run_root .. "ultra-darkplus.nvim" } -- theme
     use { run_root .. "nvim-web-devicons" } -- icons
-    use { run_root .. "alpha-nvim" } -- greeter
-    use { run_root .. "nvim-scrollbar" } -- scrollbar
-    use { run_root .. "bufferline.nvim" } -- tab area
+    use { run_root .. "alpha-nvim" }        -- greeter
+    use { run_root .. "nvim-scrollbar" }    -- scrollbar
+    use { run_root .. "bufferline.nvim" }   -- tab area
     -- use { run_root .. "sidebar.nvim"         -- sidebar
-    use { run_root .. "lualine.nvim" } -- statusbar
-    use { run_root .. "feline.nvim" } -- statusbar
-    use { run_root .. "nvim-tree.lua" } -- nvim-tree
-    use { run_root .. "toggleterm.nvim" } -- terminal
+    use { run_root .. "lualine.nvim" }      -- statusbar
+    use { run_root .. "feline.nvim" }       -- statusbar
+    use { run_root .. "nvim-tree.lua" }     -- nvim-tree
+    use { run_root .. "toggleterm.nvim" }   -- terminal
     -- float term
     use {
         run_root .. "FTerm.nvim",
-        config = function() require('FTerm').setup({
-            cmd = '/bin/bash',
-            dimensions = {
-                height = 0.25,
-                width = 0.25,
-                x = 1,
-                y = 1,
-            },
-        }) end,
-    } 
-    
-    use { run_root .. "popup.nvim" } -- popup api
+        config = function()
+            require('FTerm').setup({
+                cmd = '/bin/bash',
+                dimensions = {
+                    height = 0.25,
+                    width = 0.25,
+                    x = 1,
+                    y = 1,
+                },
+            })
+        end,
+    }
+
+    use { run_root .. "popup.nvim" }            -- popup api
     use { run_root .. "indent-blankline.nvim" } -- indent blankine
-    use { run_root .. "vim-illuminate" } -- highlighting
+    use { run_root .. "vim-illuminate" }        -- highlighting
 
     -- tools --
-    use { run_root .. "project.nvim" } -- projects
+    use { run_root .. "project.nvim" }   -- projects
     use { run_root .. "telescope.nvim" } -- telescope
     use { run_root .. "which-key.nvim" } -- keymaps
 
@@ -147,9 +149,9 @@ return packer.startup(function(use)
 
     -- autosave
     use {
-        run_root .. "auto-save.nvim",
+        run_root .. "autosave.nvim",
         config = function()
-            require("auto-save").setup {
+            require("autosave").setup {
                 debounce_delay = 1024,
             }
         end,
@@ -173,7 +175,11 @@ return packer.startup(function(use)
     }
 
     -- treesitter::comment strings::
-    use { run_root .. "nvim-ts-context-commentstring" }
+    -- set vim.g.skip_ts_context_commenstring_module = true
+    use {
+        run_root .. "nvim-ts-context-commentstring",
+        config = function() require("ts_context_commentstring").setup() end,
+    }
 
     -- treesitter:extension:indent formatter
     use {
@@ -219,15 +225,16 @@ return packer.startup(function(use)
 
     -- BUG: duplicated list items
     -- lsp_diagnostics float
-    -- use {
-    --     run_root .. "diag-float.nvim",
-    --     config = function() require('e-kaput').setup {
-    --             enabled = true,
-    --             transparency = 0,
-    --             borders = true,
-    --         }
-    --     end,
-    -- }
+    use {
+        run_root .. "diag-float.nvim",
+        config = function()
+            require('e-kaput').setup {
+                enabled = true,
+                transparency = 0,
+                borders = true,
+            }
+        end,
+    }
 
     -- code-actions
     use {
@@ -239,9 +246,10 @@ return packer.startup(function(use)
     use { run_root .. "nvim-dap" }
     use {
         run_root .. "nvim-dap-ui",
-        requires = { 'nvim-dap' },
+        requires = { 'nvim-dap', 'nvim-nio' },
         config = function() require('dapui').setup {} end,
     }
+    use { run_root .. "nvim-nio" } -- nvim-nio
 
     -- optional:: dap installer
     -- use {
@@ -286,16 +294,18 @@ return packer.startup(function(use)
     -- git --
     use { run_root .. "gitsigns.nvim" }
 
-    use {
-        run_root .. "vgit.nvim",
-        config = function() require('vgit').setup() end,
-    }
 
-    use {
-        run_root .. "neogit",
-        requires = run_root .. "plenary.nvim",
-        config = function() require("neogit").setup() end,
-    }
+    -- BUG: cloop failed
+    -- use {
+    --     run_root .. "vgit.nvim",
+    --     config = function() require('vgit').setup() end,
+    -- }
+
+    -- use {
+    --     run_root .. "neogit",
+    --     requires = run_root .. "plenary.nvim",
+    --     config = function() require("neogit").setup() end,
+    -- }
 
     -- gitui
     --use {
@@ -411,8 +421,8 @@ return packer.startup(function(use)
     -- language support --
 
     -- snippets
-    use { run_root .. "nvim-autopairs" } -- auto pair tags via treesitter,cmp
-    use { run_root .. "LuaSnip" } -- snippet engine
+    use { run_root .. "nvim-autopairs" }    -- auto pair tags via treesitter,cmp
+    use { run_root .. "LuaSnip" }           -- snippet engine
     use { run_root .. "friendly-snippets" } -- additional snippets
 
     -- uses thread -> sqlite,python3
@@ -422,34 +432,36 @@ return packer.startup(function(use)
     -- use { run_root .. "coq-thirdparty.nvim"
 
     -- cmp::
-    use { run_root .. "nvim-cmp" } -- completions engine
-    use { run_root .. "cmp_luasnip" } -- cmp snippets
-    use { run_root .. "cmp-buffer" } -- cmp buffer
-    use { run_root .. "cmp-path" } -- cmp path
-    use { run_root .. "cmp-cmdline" } -- cmp cmdline
+    use { run_root .. "nvim-cmp" }     -- completions engine
+    use { run_root .. "cmp_luasnip" }  -- cmp snippets
+    use { run_root .. "cmp-buffer" }   -- cmp buffer
+    use { run_root .. "cmp-path" }     -- cmp path
+    use { run_root .. "cmp-cmdline" }  -- cmp cmdline
     use { run_root .. "cmp-nvim-lsp" } -- cmp lsp
     use { run_root .. "cmp-nvim-lua" } -- cmp lua
     use {
-        run_root .. "cmp-nuget", -- cmp nuget
+        run_root .. "cmp-nuget",       -- cmp nuget
         requires = run_root .. "plenary.nvim",
         config = function() require("cmp-nuget").setup {} end,
     }
 
     -- lsp::
     -- use "neovim/nvim-lspconfig" -- enable LSP
-    use { run_root .. "nvim-lspconfig" } -- BUG: cannot run from localhost
-    use { run_root .. "mason.nvim" } -- lsp installer
+    use { run_root .. "nvim-lspconfig" }       -- BUG: cannot run from localhost
+    use { run_root .. "mason.nvim" }           -- lsp installer
     use { run_root .. "mason-lspconfig.nvim" } -- lsp install config
-    use { run_root .. "nvim-lsp-installer" } -- language server installer
-    use { run_root .. "nlsp-settings.nvim" } -- json
-    use { run_root .. "null-ls.nvim" } -- formatters and linters
-    use { run_root .. "SchemaStore.nvim" } -- json extended schemas
-    use { run_root .. "lsp-overloads.nvim" } -- csharp lsp overloads
-    use { run_root .. "csharpls-extended-lsp.nvim" } -- csharp_ls extended decompile
+    use { run_root .. "lsp-setup.nvim" }
+
+
+    use { run_root .. "nlsp-settings.nvim" }          -- json
+    use { run_root .. "none-ls.nvim" }                -- formatters and linters
+    use { run_root .. "SchemaStore.nvim" }            -- json extended schemas
+    use { run_root .. "lsp-overloads.nvim" }          -- csharp lsp overloads
+    use { run_root .. "csharpls-extended-lsp.nvim" }  -- csharp_ls extended decompile
     -- use { run_root .. "lsp-omnisharp.nvim" } -- omnisharp    -- BUG: breaks highlighting
     use { run_root .. "omnisharp-extended-lsp.nvim" } -- csharp omnisharp
     use {
-        run_root .. "typescript.nvim", -- typescript
+        run_root .. "typescript.nvim",                -- typescript
         config = function() require("typescript").setup {} end,
     }
     use { run_root .. "clangd_extensions.nvim" }

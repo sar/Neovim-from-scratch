@@ -1,3 +1,4 @@
+0x00-ketsu/autosave.nvim
 Decodetalkers/csharpls-extended-lsp.nvim
 Hoffs/omnisharp-extended-lsp.nvim
 Issafalcon/lsp-overloads.nvim
@@ -35,8 +36,8 @@ hrsh7th/cmp-nvim-lua
 hrsh7th/cmp-path
 hrsh7th/nvim-cmp
 j-hui/fidget.nvim
-jose-elias-alvarez/null-ls.nvim
 jose-elias-alvarez/typescript.nvim
+junnplus/lsp-setup.nvim
 krady21/gql.nvim
 lewis6991/gitsigns.nvim
 lewis6991/impatient.nvim
@@ -54,12 +55,14 @@ nvim-lua/plenary.nvim
 nvim-lua/popup.nvim
 nvim-lualine/lualine.nvim
 nvim-neo-tree/neo-tree.nvim
+nvim-neotest/nvim-nio
 nvim-pack/nvim-spectre
 nvim-telescope/telescope.nvim
 nvim-tree/nvim-tree.lua
 nvim-tree/nvim-web-devicons
 nvim-tree/nvim-web-devicons
 nvim-treesitter/nvim-treesitter
+nvimtools/none-ls.nvim
 onsails/diaglist.nvim
 p00f/clangd_extensions.nvim
 petertriho/nvim-scrollbar

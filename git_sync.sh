@@ -17,7 +17,7 @@ do
     cd $repo_
     echo "${clr_g}git::sync $repo_${clr_def}"
     git remote -v
-    #git pull
+    # git pull
     git branch
     cd ..
 done
