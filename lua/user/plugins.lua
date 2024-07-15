@@ -50,8 +50,7 @@ return packer.startup(function(use)
     use { run_root .. "vim-bbye" }       -- wm state
 
     -- interface --
-    use "/code0/pub.dev/darkplusplus.nvim"
-    -- use { run_root .. "darkplusplus.nvim" } -- theme
+    use { run_root .. "darkplusplus.nvim" } -- theme
     -- use { run_root .. "extra-darkplus.nvim" } -- theme
     -- use { run_root .. "ultra-darkplus.nvim" } -- theme
     use { run_root .. "nvim-web-devicons" } -- icons
@@ -194,7 +193,7 @@ return packer.startup(function(use)
         config = function() require("todo-comments").setup() end,
     }
 
-    -- sar/renamer.nvim
+    -- filipdutescu/renamer.nvim
     use {
         run_root .. "renamer.nvim",
         branch = "master",
@@ -202,7 +201,7 @@ return packer.startup(function(use)
         config = function() require("renamer").setup() end,
     }
 
-    -- sar/trouble.nvim
+    -- folke/trouble.nvim
     use {
         run_root .. "trouble.nvim",
         requires = run_root .. "nvim-web-devicons",

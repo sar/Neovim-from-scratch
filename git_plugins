@@ -80,6 +80,7 @@ samodostal/image.nvim
 sar/darkplusplus.nvim
 sar/diag-float.nvim
 sar/extra-darkplus.nvim
+sar/ultra-darkplus.nvim
 simrat39/inlay-hints.nvim
 simrat39/symbols-outline.nvim
 sindrets/diffview.nvim
