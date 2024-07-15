@@ -1,20 +1,28 @@
 local servers = {
     "bashls",
+    "cmake",
+    "clangd",
+    "ccls",
     "csharp_ls",
     "dockerls",
     "eslint",
     "graphql",
     "html",
     "cssls",
-    "tailwindcss",
     "jsonls",
+    "marksman",
+    "remark_ls",
     "terraformls",
     "tflint",
-    "omnisharp",
+    "lua_ls",
     "sumneko_lua",
-    "lemminx",
+    "lemminx",        -- WARN: binary
     "sqlls",
-    "rome",
+    "pylsp",
+    "pyright",
+    "sourcery",
+    -- "ansiblels",   -- BUG: fails to install
+    -- "rome",        -- BUG: logs errors
     "tsserver",
     "yamlls",
 }
@@ -25,6 +33,7 @@ local formatters = {
 }
 
 local settings = {
+    servers = servers,
     ui = {
         border = "none",
         icons = {
@@ -43,25 +52,36 @@ require("mason-lspconfig").setup({
     automatic_installation = true,
 })
 
-local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
-if not lspconfig_status_ok then
-    return
-end
+-- local tools = {
+--     "stylua",
+--     "shellcheck",
+--     "prettierd"
+-- }
+--
+-- require('mason-tool-installer').setup({
+--     ensure_installed = tools,
+--     auto_update = false,
+--     run_on_start = true,
+-- })
 
-local opts = {}
-
-for _, server in pairs(servers) do
-    opts = {
-        on_attach = require("user.lsp.handlers").on_attach,
-        capabilities = require("user.lsp.handlers").capabilities,
-    
-
-    server = vim.split(server, "@")[1]
-
-    local require_ok, conf_opts = pcall(require, "user.lsp.settings." .. server)
-    if require_ok then
-        opts = vim.tbl_deep_extend("force", conf_opts, opts)
-    end
-
-    lspconfig[server].setup(opts)
-end
+-- local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
+-- if not lspconfig_status_ok then
+--     return
+-- end
+--
+-- local opts = {}
+-- for _, server in pairs(servers) do
+--     opts = {
+--         on_attach = require("user.lsp.handlers").on_attach,
+--         capabilities = require("user.lsp.handlers").capabilities,
+--     
+--
+--     server = vim.split(server, "@")[1]
+--
+--     local require_ok, conf_opts = pcall(require, "user.lsp.settings." .. server)
+--     if require_ok then
+--         opts = vim.tbl_deep_extend("force", conf_opts, opts)
+--     end
+--
+--     lspconfig[server].setup(opts)
+-- end

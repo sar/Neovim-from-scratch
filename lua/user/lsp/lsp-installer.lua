@@ -7,7 +7,7 @@ local servers = {
     "bashls",
     "cmake",
     "clangd",
-    -- "ccls",
+    "ccls",
     "csharp_ls",
     "dockerls",
     "eslint",
@@ -19,13 +19,14 @@ local servers = {
     "remark_ls",
     "terraformls",
     "tflint",
-    -- "ansiblels",   -- BUG: fails to install
     "lua_ls",
     "sumneko_lua",
     "lemminx",        -- WARN: binary
     "sqlls",
     "pylsp",
     "pyright",
+    "sourcery",
+    -- "ansiblels",   -- BUG: fails to install
     -- "rome",        -- BUG: logs errors
     "tsserver",
     "yamlls",
@@ -38,7 +39,11 @@ for _, server_name in pairs(servers) do
     if server_available then
         server:on_ready(function()
             -- Invoke server args
-            local opts = {}
+            local opts = {
+                github = {
+                    download_url_template = "https://github.com/clangd/clangd/releases/download/snapshot_20240128/clangd-linux-snapshot_20240128.zip"
+                }
+            }
             server:setup(opts)
         end)
         if not server:is_installed() then
