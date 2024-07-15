@@ -1,7 +1,7 @@
 # Compiled Lua sources
 luac.out
 .nvim
-.nvim_old
+.nvim_*
 
 # luarocks build files
 *.src.rock
