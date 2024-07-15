@@ -41,7 +41,21 @@ luac.out
 *.x86_64
 *.hex
 
+# plugins
+*.nvim
+nvim-*
+cmp-*
 plugin/packer_compiled.lua
+LuaSnip/
+alpha-nvim/
+cmp_*/
+coc-*/
+coq.*/
+*.vim/
+friendly-snippets/
+lualine-lsp-progress/
+neogit/
+vim-*/
 
 # environment::
 env/

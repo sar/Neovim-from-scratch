@@ -1,6 +1,6 @@
 local fn = vim.fn
 
-local run_root = "/code0/pub.dev/nvim-config/.nvim/"
+local run_root = "/home/nixos/.config/nvim/"
 
 -- Automatically install packer
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
