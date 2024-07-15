@@ -1,8 +1,8 @@
 vim.cmd [[
   augroup _general_settings
     autocmd!
-    autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR> 
-    autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200}) 
+    autocmd FileType qf,help,man,lspinfo nnoremap <silent> <buffer> q :close<CR>
+    autocmd TextYankPost * silent!lua require('vim.highlight').on_yank({higroup = 'Visual', timeout = 200})
     autocmd BufWinEnter * :set formatoptions-=cro
     autocmd FileType qf set nobuflisted
     autocmd User TelescopePreviewerLoaded setlocal wrap
@@ -11,18 +11,17 @@ vim.cmd [[
   augroup _auto_run
     autocmd!
     autocmd VimEnter * :Alpha
-    " autocmd VimEnter * :NvimTreeOpen
     autocmd VimEnter * :Neotree
-    autocmd VimEnter * :Trouble
+    " autocmd VimEnter * :Trouble
     autocmd BufWinEnter * :BufferOrderByBufferNumber
   augroup end
 
   augroup _outline
-    autocmd BufWinEnter * :SymbolsOutlineOpen
+    " autocmd BufWinEnter * :SymbolsOutlineOpen
     autocmd FileType Outline setlocal signcolumn=no
   augroup end
 
-  augroup _buffer 
+  augroup _buffer
     autocmd!
     autocmd CursorHold * :lua vim.lsp.buf.hover()
     autocmd CursorHoldI * :lua vim.lsp.buf.hover()
@@ -44,7 +43,7 @@ vim.cmd [[
 
   augroup _auto_resize
     autocmd!
-    autocmd VimResized * tabdo wincmd = 
+    autocmd VimResized * tabdo wincmd =
   augroup end
 
   augroup _alpha
