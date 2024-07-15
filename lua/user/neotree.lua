@@ -2,7 +2,7 @@ local status_ok, neotree = pcall(require, "neo-tree")
 if not status_ok then
     return
 end
-local run_root = "/blade0/pub.dev/nvim-config/.nvim/"
+local run_root = "/code0/pub.dev/nvim-config/.nvim/"
 
 neotree.branch = "v2.x"
 
@@ -12,11 +12,11 @@ neotree.requires = {
 }
 
 local opts = {
-    enable_git_status = true,  -- BUG: debounce cpu%
+    enable_git_status = true,
     git_status_async = true,
     enable_diagnostics = true,
     window = {
-        width = 40,
+        width = 32,
         position = "left",
     },
     filesystem = {

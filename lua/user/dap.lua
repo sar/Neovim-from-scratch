@@ -65,7 +65,7 @@ dap.adapters.codelldb = {
     type = "server",
     port = "${port}",
     executable = {
-        command = "/blade0/bin/codelldb/adapter/codelldb",
+        command = "/code0/bin/codelldb/adapter/codelldb",
         args = { "--port", "${port}" }
     }
 }
