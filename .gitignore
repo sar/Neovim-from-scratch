@@ -55,6 +55,7 @@ coq.*/
 friendly-snippets/
 lualine-lsp-progress/
 neogit/
+promise-async/
 vim-*/
 
 # environment::

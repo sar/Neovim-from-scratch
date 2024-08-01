@@ -54,7 +54,7 @@ return packer.startup(function(use)
     -- use { run_root .. "extra-darkplus.nvim" } -- theme
     -- use { run_root .. "ultra-darkplus.nvim" } -- theme
     use { run_root .. "nvim-web-devicons" } -- icons
-    use { run_root .. "alpha-nvim" }        -- greeter
+    -- use { run_root .. "alpha-nvim" }        -- greeter
     use { run_root .. "nvim-scrollbar" }    -- scrollbar
     use { run_root .. "bufferline.nvim" }   -- tab area
     -- use { run_root .. "sidebar.nvim"         -- sidebar
@@ -156,16 +156,19 @@ return packer.startup(function(use)
         end,
     }
 
-    -- TODO: customize config
     -- code folding
-    -- use { run_root .. "promise-async.nvim"
-    -- use {
-    --     run_root .. "ufo.nvim",
-    --     require = {
-    --         run_root .. "promise-async.nvim",
-    --     },
-    --     config = function() require('ufo').setup {} end,
-    -- }
+    use { run_root .. "promise-async" }
+    use {
+        run_root .. "nvim-ufo",
+        require = {
+            run_root .. "promise-async",
+        },
+        config = function() require('ufo').setup ({
+            provider_selector = function(bufnr, filetype, buftype)
+                return {'treesitter', 'indent'}
+            end
+        }) end,
+    }
 
     -- treesitter:syntax highlighting
     use {

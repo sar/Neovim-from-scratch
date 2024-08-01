@@ -16,7 +16,7 @@ local options = {
   completeopt = { "menuone", "noselect" }, -- mostly just for cmp
   smartcase = true,
   expandtab = true,
-  shiftwidth = 4,                          -- the number of spaces inserted for each indentation
+  shiftwidth = 2,                          -- the number of spaces inserted for each indentation
   tabstop = 2,                             -- insert 2 spaces for a tab
   smartindent = true,
 

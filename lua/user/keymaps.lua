@@ -63,8 +63,10 @@ keymap("n", "<A-i>", ":lua require('FTerm').toggle()<CR>", opts)
 -- Actions --
 
 -- code.menu
-keymap("n", "<A-z>", ":CodeActionMenu<CR>", opts)
-keymap("i", "<A-z>", ":CodeActionMenu<CR>", opts)
+-- keymap("n", "<A-z>", ":CodeActionMenu<CR>", opts)
+-- keymap("i", "<A-z>", ":CodeActionMenu<CR>", opts)
+keymap("n", "<A-z>", ":lua vim.lsp.buf.code_action()<CR>", opts)
+keymap("i", "<A-z>", ":lua vim.lsp.buf.code_action()<CR>", opts)
 
 -- text.replace 
 keymap("n", "<F7>", "<cmd>lua require('spectre').open() <CR>", opts)
