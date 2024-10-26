@@ -24,7 +24,7 @@ vim.g.maplocalleader = " "
 --   shift  = "S"
 
 -- Normal --
--- mode.normal 
+-- mode.normal
 keymap("i", "jk", "<ESC>", opts)
 
 -- navigate.focus
@@ -68,7 +68,7 @@ keymap("n", "<A-i>", ":lua require('FTerm').toggle()<CR>", opts)
 keymap("n", "<A-z>", ":lua vim.lsp.buf.code_action()<CR>", opts)
 keymap("i", "<A-z>", ":lua vim.lsp.buf.code_action()<CR>", opts)
 
--- text.replace 
+-- text.replace
 keymap("n", "<F7>", "<cmd>lua require('spectre').open() <CR>", opts)
 
 -- text.move
@@ -112,4 +112,3 @@ keymap("n", "<F12>", "<cmd>lua require'dap'.step_out() <CR>", opts)
 
 -- diagnostics
 keymap("n", "<A-q>", ":lua vim.diagnostic.setloclist()<CR>", opts)
-

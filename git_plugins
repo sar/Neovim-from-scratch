@@ -38,6 +38,8 @@ hrsh7th/nvim-cmp
 j-hui/fidget.nvim
 jose-elias-alvarez/typescript.nvim
 junnplus/lsp-setup.nvim
+kevinhwang91/nvim-ufo
+kevinhwang91/promise-async
 krady21/gql.nvim
 lewis6991/gitsigns.nvim
 lewis6991/impatient.nvim
